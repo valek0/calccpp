@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <cmath>
 namespace zad3 {
 
@@ -657,7 +657,8 @@ namespace zad3 {
 			this->TransparencyKey = System::Drawing::Color::LightGray;
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
-			
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown); 
+			this->KeyPreview = true; 
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -820,9 +821,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
 	memory = 0.0; // MC
 }
-	   
-
-};
+private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == Keys::Back) {
+		btn_usun_Click(sender, e);
+	}
+}
+	   };
 	
 }
 
